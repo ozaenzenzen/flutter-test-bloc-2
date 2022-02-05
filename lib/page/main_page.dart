@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  Color mainColor = Colors.blueGrey;
+  Color mainColor = Colors.teal;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
