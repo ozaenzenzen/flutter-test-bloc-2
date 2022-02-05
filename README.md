@@ -1,6 +1,6 @@
 # test_bloc_2
 
-A new Flutter project.
+Implementing bloc state management to change color of the app.
 
 ## Getting Started
 
