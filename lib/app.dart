@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_bloc_2/bloc/bloc/color_bloc.dart';
-import 'package:test_bloc_2/main_page.dart';
+import 'package:test_bloc_2/page/main_page.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
