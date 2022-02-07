@@ -25,10 +25,6 @@ class _MainPageState extends State<MainPage> {
         child: BlocConsumer<ColorBloc, ColorState>(
           listener: (context, state) {
             if (state is ColorSuccess) {
-              // AppBar(
-              //   title: Text("Testing"),
-              //   backgroundColor: state.colors,
-              // );
               mainColor = state.colors!;
             }
           },
@@ -38,10 +34,6 @@ class _MainPageState extends State<MainPage> {
               backgroundColor: mainColor,
             );
           },
-          // child: AppBar(
-          //   title: Text("Testing"),
-          //   backgroundColor: mainColor,
-          // ),
         ),
       ),
       body: BlocConsumer<ColorBloc, ColorState>(
