@@ -9,5 +9,13 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     on<CounterEvent>((event, emit) {
       // TODO: implement event handler
     });
+    on<CounterIncrement>((event, emit) {
+      emit(CounterLoading());
+      try {
+        emit(CounterCalculated(event.numIncrement));
+      } catch (e) {
+        emit(CounterError(e.toString()));
+      }
+    });
   }
 }
