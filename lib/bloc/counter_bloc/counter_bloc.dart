@@ -11,10 +11,22 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     on<CounterEvent>((event, emit) {
       // TODO: implement event handler
     });
-    on<CounterCalculation>((event, emit) {
+    on<CounterIncrement>((event, emit) {
       emit(CounterLoading());
-      try {                
-        emit(CounterCalculated(counterServices!.incrementFunction(event.numIncrement1, event.numIncrement2)));
+      try {
+        emit(CounterCalculated(
+          counterServices!.incrementFunction(event.numIncrement1, event.numIncrement2),
+        ));
+      } catch (e) {
+        emit(CounterError(e.toString()));
+      }
+    });
+    on<CounterDecrement>((event, emit) {
+      emit(CounterLoading());
+      try {
+        emit(CounterCalculated(
+          counterServices!.incrementFunction(event.numDecrement1, event.numDecrement2),
+        ));
       } catch (e) {
         emit(CounterError(e.toString()));
       }
