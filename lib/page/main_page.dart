@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_bloc_2/bloc/color_bloc/color_bloc.dart';
+import 'package:test_bloc_2/page/calculate_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -36,42 +37,65 @@ class _MainPageState extends State<MainPage> {
           },
         ),
       ),
-      body: BlocConsumer<ColorBloc, ColorState>(
-        listener: (context, state) {
-          if (state is ColorSuccess) {
-            mainColor = state.colors!;
-          }
-        },
-        builder: (context, state) {
-          return Container(
-            alignment: Alignment.center,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: mainColor,
-              ),
-              onPressed: () {
-                // debugPrint("Testing");
-                // BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(colors: Colors.red));
-                BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(num: Random().nextInt(5)));
-              },
-              child: Text("Change Color"),
-            ),
-          );
-        },
-        // child: Container(
-        //   alignment: Alignment.center,
-        //   child: ElevatedButton(
-        //     style: ElevatedButton.styleFrom(
-        //       primary: mainColor,
-        //     ),
-        //     onPressed: () {
-        //       debugPrint("Testing");
-        //       // context.read<ColorBloc>().add(ChangeColorEvent(colors: Colors.red));
-        //       BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(colors: Colors.red));
-        //     },
-        //     child: Text("Change Color"),
-        //   ),
-        // ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          BlocConsumer<ColorBloc, ColorState>(
+            listener: (context, state) {
+              if (state is ColorSuccess) {
+                mainColor = state.colors!;
+              }
+            },
+            builder: (context, state) {
+              return Container(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    Builder(builder: (context) {
+                      return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: mainColor,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CalculatePage()),
+                          );
+                        },
+                        child: Text("Counter Page"),
+                      );
+                    }),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: mainColor,
+                      ),
+                      onPressed: () {
+                        // debugPrint("Testing");
+                        // BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(colors: Colors.red));
+                        BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(num: Random().nextInt(5)));
+                      },
+                      child: Text("Change Color"),
+                    ),
+                  ],
+                ),
+              );
+            },
+            // child: Container(
+            //   alignment: Alignment.center,
+            //   child: ElevatedButton(
+            //     style: ElevatedButton.styleFrom(
+            //       primary: mainColor,
+            //     ),
+            //     onPressed: () {
+            //       debugPrint("Testing");
+            //       // context.read<ColorBloc>().add(ChangeColorEvent(colors: Colors.red));
+            //       BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(colors: Colors.red));
+            //     },
+            //     child: Text("Change Color"),
+            //   ),
+            // ),
+          ),
+        ],
       ),
     );
   }
