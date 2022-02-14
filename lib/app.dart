@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_bloc_2/bloc/color_bloc/color_bloc.dart';
+import 'package:test_bloc_2/bloc/counter_bloc/counter_bloc.dart';
 import 'package:test_bloc_2/page/calculate_page.dart';
 import 'package:test_bloc_2/page/main_page.dart';
 
@@ -18,6 +19,7 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ColorBloc()),
+        BlocProvider(create: (context) => CounterBloc()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -38,7 +40,7 @@ class _MyAppState extends State<MyApp> {
             //     child: const MainPage(),
             //   );
             // },
-            home: Builder(builder: (context){
+            home: Builder(builder: (context) {
               ScreenUtil.setContext(context);
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
