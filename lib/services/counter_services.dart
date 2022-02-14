@@ -1,9 +1,9 @@
 class CounterServices {
-  incrementFunction(num a, num b) {
+  double incrementFunction(double a, double b) {
     return a + b;
   }
 
-  decrementFunction(num a, num b) {
+  decrementFunction(int a, int b) {
     return a - b;
   }
 }
