@@ -80,20 +80,6 @@ class _MainPageState extends State<MainPage> {
                 ),
               );
             },
-            // child: Container(
-            //   alignment: Alignment.center,
-            //   child: ElevatedButton(
-            //     style: ElevatedButton.styleFrom(
-            //       primary: mainColor,
-            //     ),
-            //     onPressed: () {
-            //       debugPrint("Testing");
-            //       // context.read<ColorBloc>().add(ChangeColorEvent(colors: Colors.red));
-            //       BlocProvider.of<ColorBloc>(context).add(ChangeColorEvent(colors: Colors.red));
-            //     },
-            //     child: Text("Change Color"),
-            //   ),
-            // ),
           ),
         ],
       ),
